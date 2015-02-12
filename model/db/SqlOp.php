@@ -6,7 +6,7 @@ class SqlOp extends Model{
 	private $password;
 	
 	private $db;
-	private $db_name = 'LightTracker';
+	private $db_name = 'nomiwan';
 
 	public $connect;
 	public $result;
@@ -39,7 +39,7 @@ class SqlOp extends Model{
 			return FALSE;
 		}
 	}
-	private function queryTo($_str){
+	public function queryTo($_str){
 		$this->result = mysql_query($_str,$this->connect);
 		if($this->result!=FALSE){
 			return TRUE;

@@ -53,9 +53,9 @@ class Route extends Model {
 		$this->load('tools/Tools.php');
 		
 		$controller = $fn_map[$this->fn];
-
+		
 		if (!$controller || !file_exists($this->controller_dir.$controller)) {
-			return FALSE;
+			return 'not exist the controller';
 		}
 		//实例化该控制器,并返回
 		$class_name = $this->Tools->get_php_filename($controller);
@@ -69,14 +69,12 @@ class Route extends Model {
 
 		//验证继承 和 是否带有set_param方法
 		if (!$route_controller_obj instanceof $this->controller_parent) {
-			return FALSE;
+			return 'isnt instanced of controller';
 		}
 		if (!method_exists($route_controller_obj, $this->set_param_fn)) {
-			return FALSE;
+			return 'doesnt has set_param';
 		}
-		
 		$result = $route_controller_obj->set_param($this->param);
-
 		$this->load('io/output.php');
 		//如果是数组返回
 		if(isset($result['result'])){
