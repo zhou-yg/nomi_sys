@@ -1,5 +1,8 @@
 <?php
-
+/*
+ * User_list表的操作
+ *  
+ */
 class User_list extends Model{
 	
 	private $tname = 'user_list';
@@ -20,7 +23,6 @@ class User_list extends Model{
 			$insertSql = "INSERT INTO $tname VALUES(NULL,'$clientToken','$userToken','$username')";
 			
 			$sqlop = $GLOBALS['SqlOp'];
-			
 			if($sqlop->queryTo($insertSql)){
 				
 			}else{
@@ -37,9 +39,47 @@ class User_list extends Model{
 			'data' => $data
 		);
 	}
-	public function remove($where){
+	public function remove(){
+		
 	}
-	public function update(){
+	/*
+	 * 数据列对应
+	 * 条件
+	 */
+	public function update($param,$where){
+		$result = TRUE;
+		$data = null;
+		
+		$tname = $this->tname;
+		$updateSql = "UPDATE $tname SET ";
+
+		
+		if(is_array($param)){
+			
+			
+			foreach ($param as $columnName => $value) {
+				
+				$updateSql .= $columnName.'='."'$value' ,";
+			}
+			$updateSql = trim($updateSql,',');
+			$updateSql .= 'where '.$where;
+			
+			$sqlop = $GLOBALS['SqlOp'];	
+			if($sqlop->queryTo($updateSql)){
+				
+			}else{
+				$result = FALSE;
+				$data   = 'update fail';
+			}
+		}else{
+			$result = FALSE;
+			$data   = 'data isnt array';
+		}	
+		
+		return array(
+			'result' => $result,
+			'data'   => $data
+		);
 	}
 	public function query(){
 	}

@@ -17,6 +17,12 @@ class User_list_controller extends Controller{
 				case 'add':
 					$result = $this->add_user($paramArr);
 					break;
+				case 'remove':
+					$result = $this->remove_user($paramArr);
+					break;
+				case 'setname':
+					$result = $this->set_username($paramArr);
+					break;
 				default:
 					break;
 			}		
@@ -78,6 +84,41 @@ class User_list_controller extends Controller{
 				}
 			}
 		}	
+		return array(
+			'result' => $result,
+			'data'   => $data
+		);
+	}
+	/*
+	 * 根据uid，超级秘钥移除一位用户
+	 */
+	private function remove_user($param){
+	}
+	/*
+	 * 根据uid,设置username
+	 * 
+	 * $paramArr = array(
+	 * 	  id,
+	 *    username
+	 * );
+	 */
+	private function set_username($paramArr){
+		$result = TRUE;
+		$data = null;
+		
+		if( isset($paramArr['id']) && isset($paramArr['username']) ){
+			
+			$id = $paramArr['id'];
+			$username = $paramArr['username'];
+			
+			$data = $this->User_list->update(array(
+				'username' => $username
+			),"id=$id");
+			
+		}else{
+			$result = FALSE;
+			$data = 'doesnt has id or username';
+		}
 		return array(
 			'result' => $result,
 			'data'   => $data

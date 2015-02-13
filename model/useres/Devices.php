@@ -24,6 +24,7 @@ class Devices extends Model{
 	}
 	public function remove(){
 		
+		$tname = $this->tname;	
 	}
 }
 

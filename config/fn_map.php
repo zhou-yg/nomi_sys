@@ -2,7 +2,8 @@
 //可以是这种形式绑定
 $fn_map = array(
 	1001 => 'A.php',
-	1002 => 'testUp.php'
+	1002 => 'testUp.php',
+	1003 => 'sec/get_token.php'
 );
 /*--------------- 以上不需要new SqlOp --------------------*/
 

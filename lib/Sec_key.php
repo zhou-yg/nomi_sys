@@ -1,4 +1,4 @@
-q<?php
+<?php
 class Sec_key extends Model {
 	
 	private function unixtime_craete() {

@@ -22,7 +22,7 @@ include_once $core_path.$c_path;
 include_once $core_path.$controller_path;
 include_once $core_path.$model_path;
 include_once $lib_path.$route_path;
-include_once 'config/fn_map.php';
+$fn_map = include_once 'config/fn_map.php';
 
 $route = new Route();
 $r = $route->init($fn_map);

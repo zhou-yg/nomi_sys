@@ -32,7 +32,6 @@ class C {
 	 */
 	public function lib($libName,$other_handle = NULL){
 		$libPath = $this->lib_dir.$libName;
-
 		$this->load_file($libPath, $other_handle);
 	}
 	/*
@@ -48,11 +47,11 @@ class C {
 	 * 加载lib或model
 	 */
 	private function load_file($path,$other_handle){
+
 		if(!file_exists($path)){
 			exit('controller load model ['.$path.']  does not exist');
 		}
 		$model_name = $this->get_filename($path);
-		
 		if($model_name){
 			if( isset($this->loaded_model_cache[$model_name]) ){
 				return;
@@ -61,7 +60,6 @@ class C {
 			return;
 		}
 		include_once $path;
-		var_dump($path);
 
 		$model_instance = new $model_name();
 		//验证 model的继承
