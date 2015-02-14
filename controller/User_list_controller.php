@@ -2,8 +2,8 @@
 
 class User_list_controller extends Controller{
 	
-	function __construct(){
-		parent::__construct(TRUE);
+	function __construct($isSql=FALSE){
+		parent::__construct($isSql);
 		$this->load('useres/User_list.php');
 	}
 	public function set_param($paramArr){

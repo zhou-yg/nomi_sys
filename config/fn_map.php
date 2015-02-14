@@ -11,6 +11,9 @@ $fn_map = array(
 //也可以这种形式绑定
 $fn_map[2001]  = 'User_list_controller.php';
 
+
+$fn_map[3001]  = 'game/Game_list_controller.php';
+
 return $fn_map;
 ?>
 	
