@@ -27,12 +27,13 @@
 			$tmpArr = array();
 			foreach ($resultArr as $key => $value) {
 				$tmpChildArr = array();			
-				for ($i=0,$len=count($value)/2; $i < $len; $i++) {
-					$tmpChildArr[$i] = $value[$i];
+				foreach ($value as $key => $value) {
+					if(is_string($key)){
+						$tmpChildArr[$key] = $value;
+					}
 				}
 				$tmpArr[] = $tmpChildArr;
 			}
-
 			return $tmpArr;
 		}else{
 			return null;
