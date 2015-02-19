@@ -9,7 +9,7 @@ $fn_map = array(
 
 /*--------------- 以下上需要new SqlOp --------------------*/
 //也可以这种形式绑定
-$fn_map[2001]  = 'User_list_controller.php';
+$fn_map[2001]  = 'user/User_list_controller.php';
 
 
 $fn_map[3001]  = 'game/Game_list_controller.php';
